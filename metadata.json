@@ -1,0 +1,8 @@
+{
+  "name": "Study Hub",
+  "description": "Premium full-stack learning platform for Classes 9-12 with revision PDFs, YouTube streams, interactive timers, quizzes, progress trackers, study schedulers, and server-side Gemini AI Tutor.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

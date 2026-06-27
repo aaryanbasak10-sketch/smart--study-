@@ -1,0 +1,52 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function getUserData() {
+      return get(/databases/$(database)/documents/users/$(request.auth.uid)).data;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        (resource == null || getUserData().role == 'admin');
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && (request.auth.uid == userId || getUserData().role == 'admin');
+    }
+
+    // Notes collection
+    match /notes/{noteId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated(); // To allow simple uploads in the demo, but we can guard if we want
+    }
+
+    // Videos collection
+    match /videos/{videoId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Quizzes collection
+    match /quizzes/{quizId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated();
+    }
+
+    // Attempts (quiz progress tracker)
+    match /attempts/{attemptId} {
+      allow read, write: if isAuthenticated();
+    }
+
+    // Planner collection
+    match /planner/{taskId} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}

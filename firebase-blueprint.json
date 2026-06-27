@@ -1,0 +1,78 @@
+{
+  "collections": {
+    "users": {
+      "fields": {
+        "uid": "string",
+        "email": "string",
+        "name": "string",
+        "role": "string",
+        "class": "string",
+        "createdAt": "timestamp"
+      },
+      "indexes": []
+    },
+    "notes": {
+      "fields": {
+        "id": "string",
+        "title": "string",
+        "class": "string",
+        "subject": "string",
+        "pdfUrl": "string",
+        "pdfName": "string",
+        "uploadedBy": "string",
+        "createdAt": "timestamp"
+      },
+      "indexes": []
+    },
+    "videos": {
+      "fields": {
+        "id": "string",
+        "title": "string",
+        "class": "string",
+        "subject": "string",
+        "videoUrl": "string",
+        "videoName": "string",
+        "uploadedBy": "string",
+        "createdAt": "timestamp"
+      },
+      "indexes": []
+    },
+    "quizzes": {
+      "fields": {
+        "id": "string",
+        "title": "string",
+        "class": "string",
+        "subject": "string",
+        "chapter": "string",
+        "timerMinutes": "number",
+        "questions": "array",
+        "createdAt": "timestamp"
+      },
+      "indexes": []
+    },
+    "attempts": {
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "quizId": "string",
+        "quizTitle": "string",
+        "score": "number",
+        "maxScore": "number",
+        "attemptedAt": "timestamp"
+      },
+      "indexes": []
+    },
+    "planner": {
+      "fields": {
+        "id": "string",
+        "uid": "string",
+        "title": "string",
+        "date": "string",
+        "time": "string",
+        "subject": "string",
+        "completed": "boolean"
+      },
+      "indexes": []
+    }
+  }
+}
